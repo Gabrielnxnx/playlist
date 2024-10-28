@@ -1,40 +1,120 @@
 /* Estilo Geral */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #ddd;
-  margin: 0;
-  display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-  height: 100vh;
-  flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ddd;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Evita rolagem na tela do celular */
 }
 
 /* Container Principal */
 .container {
-  display: flex;
-  width: 80%;
-  max-width: 900px;
-  border: 1px solid #333;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
-  background-color: #181818; /* Cor de fundo para contraste */
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    max-width: 900px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: #181818;
 }
 
 /* Barra Lateral */
 .sidebar {
-  width: 200px;
-  background-color: #282828;
-  padding: 20px;
-  text-align: left;
+    width: 200px;
+    background-color: #282828;
+    padding: 20px;
+    text-align: left;
 }
 
 /* Conteúdo Principal */
 main {
-  flex: 1;
-  padding: 20px;
-  text-align: center;
-  background-color: #181818;
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    background-color: #181818;
+}
+
+/* Ajuste da Imagem de Capa */
+.cover-container img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Controles */
+.controls {
+    margin-top: 15px;
+}
+
+.controls button {
+    background-color: #444;
+    color: #ddd;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.controls button:hover {
+    background-color: #555;
+}
+
+/* Estilos Específicos para Tela de Celular (Proporção 16:9) */
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    /* Ajuste para proporção 16:9 */
+    .container {
+        flex-direction: column; /* Empilha os elementos verticalmente */
+        width: 100%;
+        height: 100vh;
+        max-width: 100%; /* Remove restrição de largura */
+        border-radius: 0;
+    }
+
+    .sidebar {
+        width: 100%; /* Expande a largura da barra lateral */
+        text-align: center;
+        padding: 10px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    main {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .cover-container img {
+        max-width: 100%; /* A imagem ocupa toda a largura disponível */
+        margin-bottom: 15px;
+    }
+
+    /* Ajustes dos botões de controle */
+    .controls {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .controls button {
+        padding: 8px 12px;
+        font-size: 0.9em;
+        margin: 5px;
+    }
 }
