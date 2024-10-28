@@ -1,0 +1,21 @@
+{
+  "name": "Minha Playlist de Música",
+  "short_name": "MyMusic",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1db954",
+  "description": "App de música para continuar ouvindo em segundo plano.",
+  "icons": [
+    {
+      "src": "images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
