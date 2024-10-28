@@ -7,8 +7,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden; /* Evita rolagem na tela do celular */
+    min-height: 100vh;
 }
 
 /* Container Principal */
@@ -22,6 +21,7 @@ body {
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     background-color: #181818;
+    margin: 20px;
 }
 
 /* Barra Lateral */
@@ -32,6 +32,28 @@ body {
     text-align: left;
 }
 
+.sidebar h2 {
+    font-size: 1.2em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #ddd;
+}
+
+.sidebar li:hover {
+    background-color: #52526e;
+}
+
 /* Conteúdo Principal */
 main {
     flex: 1;
@@ -40,13 +62,39 @@ main {
     background-color: #181818;
 }
 
-/* Ajuste da Imagem de Capa */
+/* Imagem da Capa da Música */
+.cover-container {
+    margin: 20px 0;
+}
+
 .cover-container img {
     width: 100%;
-    height: auto;
     max-width: 200px;
     border-radius: 8px;
     object-fit: cover;
+}
+
+/* Playlist e Player */
+.playlist ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #333;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #ddd;
+}
+
+li:hover {
+    background-color: #52526e;
+}
+
+.player {
+    margin-top: 20px;
 }
 
 /* Controles */
@@ -69,18 +117,31 @@ main {
     background-color: #555;
 }
 
-/* Estilos Específicos para Tela de Celular (Proporção 16:9) */
-@media (max-width: 768px) {
-    body {
-        padding: 0;
+/* Responsividade para Telas Médias (Tablets e Telas Menores) */
+@media (max-width: 1024px) {
+    .container {
+        width: 90%;
     }
 
-    /* Ajuste para proporção 16:9 */
+    .sidebar {
+        width: 150px;
+    }
+
+    .cover-container img {
+        max-width: 150px;
+    }
+}
+
+/* Responsividade para Telas Pequenas (Celulares) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
     .container {
         flex-direction: column; /* Empilha os elementos verticalmente */
         width: 100%;
-        height: 100vh;
-        max-width: 100%; /* Remove restrição de largura */
+        max-width: 100%;
         border-radius: 0;
     }
 
