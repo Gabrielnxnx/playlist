@@ -31,7 +31,7 @@ const playlists = {
       cover: "images/5.jpg",
     },
     {
-      title: "Fé nas Maluca.mp3",
+      title: "Fé nas Maluca",
       src: "music/Fé nas Maluca(MP3_160K).mp3",
       cover: "images/6.jpg",
     },
