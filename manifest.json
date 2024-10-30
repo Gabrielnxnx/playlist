@@ -17,6 +17,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
+  ]
   // Outras propriedades que já existam no seu manifesto podem ser mantidas aqui
 }
