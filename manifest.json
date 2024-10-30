@@ -1,11 +1,11 @@
 {
-  "name": "Minha Playlist de Música",
-  "short_name": "MyMusic",
-  "start_url": ".",
+  "name": "Minha Aplicação Completa",
+  "short_name": "MyApp",
+  "description": "Um aplicativo com funcionalidade de música em PWA.",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#121212",
   "theme_color": "#1db954",
-  "description": "App de música para continuar ouvindo em segundo plano.",
   "icons": [
     {
       "src": "images/icon-192x192.png",
@@ -17,5 +17,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  // Outras propriedades que já existam no seu manifesto podem ser mantidas aqui
 }
