@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Biblioteca</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Cabeçalho com link para a página principal -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="logo">MyMusic</div>
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <!-- Link para a página principal -->
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <!-- Mantém o link da biblioteca -->
+        </ul>
+        <input
+          type="text"
+          class="search-bar"
+          placeholder="Buscar músicas ou playlists"
+        />
+        <button class="login-btn">Login</button>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Minha Biblioteca</h1>
+      <div class="playlist-library">
+        <p>Selecione uma playlist para começar a ouvir:</p>
+        <ul>
+          <li><a href="index.html?playlist=playlist1">Playlist 1</a></li>
+          <li><a href="index.html?playlist=playlist2">Playlist 2</a></li>
+          <li><a href="index.html?playlist=playlist3">Playlist 3</a></li>
+        </ul>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
