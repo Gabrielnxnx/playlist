@@ -1,6 +1,11 @@
 let currentPlaylist = [];
 let currentIndex = 0;
 let isRepeat = false;
+let isShuffle = false;
+const audioPlayer = document.getElementById("audioPlayer");
+const miniPlayerTitle = document.getElementById("miniPlayerTitle");
+const themeToggle = document.getElementById("themeToggle");
+const searchBar = document.querySelector(".search-bar");
 
 // Dados das playlists
 const playlists = {
@@ -39,11 +44,6 @@ const playlists = {
       title: "LinoMC - Trono 🚽",
       src: "music/LinoMC - Trono 🚽 ( Prod. Custic )(MP3_160K).mp3",
       cover: "images/trono.jpg",
-    },
-    {
-      title: "Pode não mano kk😂",
-      src: "music/Pode não mano kk😂(MP3_160K).mp3",
-      cover: "images/mm.jpg",
     },
     {
       title: "Zona Norte  -  Prod _patriciosid",
@@ -157,17 +157,18 @@ const playlists = {
   ],
 };
 
-// Carrega a playlist selecionada
+// Carrega uma playlist e exibe no DOM
 function loadPlaylist(playlistName) {
   currentPlaylist = playlists[playlistName];
   currentIndex = 0; // Começa da primeira música
   displayPlaylist(currentPlaylist);
+  playMusic(currentIndex);
 }
 
-// Exibe a playlist no DOM
+// Exibe a playlist
 function displayPlaylist(playlist) {
   const musicList = document.getElementById("music-list");
-  musicList.innerHTML = ""; // Limpa a lista de músicas
+  musicList.innerHTML = "";
 
   playlist.forEach((music, index) => {
     const li = document.createElement("li");
@@ -177,63 +178,91 @@ function displayPlaylist(playlist) {
   });
 }
 
-// Toca a música e atualiza a imagem de capa
+// Função para tocar a música e atualizar o mini player
 function playMusic(index) {
-  const audioPlayer = document.getElementById("audioPlayer");
-  const coverImage = document.getElementById("coverImage");
-
   currentIndex = index;
-  audioPlayer.src = currentPlaylist[currentIndex].src;
-  coverImage.src = currentPlaylist[currentIndex].cover;
+  const music = currentPlaylist[currentIndex];
+  audioPlayer.src = music.src;
+  document.getElementById("coverImage").src = music.cover;
   audioPlayer.play();
+  updateMiniPlayer(music.title);
 }
 
-// Avança para a próxima música
+// Atualiza o título no mini player
+function updateMiniPlayer(title) {
+  miniPlayerTitle.textContent = title;
+}
+
+// Próxima música com modo aleatório
 function nextMusic() {
-  currentIndex = (currentIndex + 1) % currentPlaylist.length;
+  if (isShuffle) {
+    currentIndex = Math.floor(Math.random() * currentPlaylist.length);
+  } else {
+    currentIndex = (currentIndex + 1) % currentPlaylist.length;
+  }
   playMusic(currentIndex);
 }
 
-// Volta para a música anterior
+// Função para música anterior
 function prevMusic() {
   currentIndex =
     (currentIndex - 1 + currentPlaylist.length) % currentPlaylist.length;
   playMusic(currentIndex);
 }
 
+// Alternância de tema claro/escuro
+function toggleTheme() {
+  const newTheme = document.body.classList.contains("dark") ? "light" : "dark";
+  document.body.classList.toggle("dark", newTheme === "dark");
+  document.body.classList.toggle("light", newTheme === "light");
+  localStorage.setItem("theme", newTheme);
+}
+
+themeToggle.addEventListener("click", toggleTheme);
+
+// Carrega o tema salvo no carregamento da página
+function loadSavedTheme() {
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  document.body.classList.add(savedTheme);
+}
+
 // Alterna o modo de repetição
 function toggleRepeat() {
   isRepeat = !isRepeat;
-  const audioPlayer = document.getElementById("audioPlayer");
   audioPlayer.loop = isRepeat;
   alert(isRepeat ? "Repetição ativada" : "Repetição desativada");
 }
 
-// Função para filtrar músicas com base na pesquisa
+// Alterna o modo de reprodução aleatória
+function toggleShuffle() {
+  isShuffle = !isShuffle;
+  alert(isShuffle ? "Modo aleatório ativado" : "Modo aleatório desativado");
+}
+
+// Função para busca dinâmica
 function filterMusic(event) {
   const searchTerm = event.target.value.toLowerCase();
   const filteredPlaylist = currentPlaylist.filter((music) =>
     music.title.toLowerCase().includes(searchTerm)
   );
-  displayPlaylist(filteredPlaylist); // Exibe apenas as músicas filtradas
+  displayPlaylist(filteredPlaylist);
 }
 
-// Carrega a primeira playlist ao abrir a página
+// Inicializa o áudio e configura eventos de controle
 window.onload = () => {
-  loadPlaylist("playlist1");
+  loadSavedTheme(); // Carrega o tema salvo
+  const playlistParam =
+    new URLSearchParams(window.location.search).get("playlist") || "playlist1";
+  loadPlaylist(playlistParam);
 
-  // Adiciona o evento de input à barra de pesquisa
-  const searchBar = document.querySelector(".search-bar");
   searchBar.addEventListener("input", filterMusic);
 
-  // Adiciona o evento "ended" ao player de áudio para mudar automaticamente
-  const audioPlayer = document.getElementById("audioPlayer");
+  // Avança automaticamente para a próxima música
   audioPlayer.addEventListener("ended", () => {
-    // Se o modo de repetição não estiver ativado, avança para a próxima música
     if (!isRepeat) {
       nextMusic();
     } else {
-      playMusic(currentIndex); // Reproduz a música atual novamente
+      playMusic(currentIndex);
     }
   });
 };
