@@ -6,42 +6,27 @@
     <title>Minha Playlist de Música</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="manifest" href="manifest.json" />
-    >
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker
-          .register("service-worker.js")
-          .then((registration) => {
-            console.log("Service Worker registrado:", registration);
-          })
-          .catch((error) => {
-            console.log("Erro ao registrar o Service Worker:", error);
-          });
-      }
-    </script>
   </head>
-  <body>
-    <!-- Cabeçalho com Menu, Pesquisa e Login -->
+  <body class="dark">
+    <!-- Cabeçalho com tema e links -->
     <header class="header">
       <nav class="navbar">
         <div class="logo">MyMusic</div>
         <ul class="nav-links">
-          <li><a href="#">Início</a></li>
-          <li><a href="#">Buscar</a></li>
-          <li><a href="#">Sua Biblioteca</a></li>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
         </ul>
         <input
           type="text"
           class="search-bar"
           placeholder="Buscar músicas ou playlists"
         />
-        <button class="login-btn">Login</button>
+        <button id="themeToggle" class="theme-toggle">🌙/☀️</button>
       </nav>
     </header>
 
+    <!-- Conteúdo Principal -->
     <div class="container">
-      <!-- Barra Lateral de Playlists -->
       <aside class="sidebar">
         <h2>Playlists</h2>
         <ul id="playlist-list">
@@ -51,11 +36,16 @@
         </ul>
       </aside>
 
-      <!-- Conteúdo Principal -->
       <main>
         <h1>Minha Playlist de Música</h1>
+        <!-- Barra de Pesquisa -->
+        <input
+          type="text"
+          class="search-bar"
+          placeholder="Buscar músicas ou playlists"
+        />
 
-        <!-- Imagem da Música -->
+        <!-- Imagem da Capa e Player -->
         <div class="cover-container">
           <img
             id="coverImage"
@@ -63,26 +53,30 @@
             alt="Capa da Música"
           />
         </div>
-
-        <!-- Lista de Músicas -->
         <div class="playlist">
-          <ul id="music-list">
-            <!-- As músicas serão carregadas via JavaScript -->
-          </ul>
+          <ul id="music-list"></ul>
         </div>
 
-        <!-- Player de Música -->
-        <div class="player">
-          <audio id="audioPlayer" controls></audio>
-        </div>
-
-        <!-- Controles -->
+        <!-- Controles de Música -->
         <div class="controls">
           <button onclick="prevMusic()">⏮️ Anterior</button>
+          <button onclick="toggleShuffle()">🔀 Aleatório</button>
           <button onclick="toggleRepeat()">🔁 Repetir</button>
           <button onclick="nextMusic()">⏭️ Próxima</button>
         </div>
+
+        <div class="player">
+          <audio id="audioPlayer" controls></audio>
+        </div>
       </main>
+    </div>
+
+    <!-- Mini Player Flutuante -->
+    <div class="mini-player" id="miniPlayer">
+      <button onclick="prevMusic()">⏮️</button>
+      <span id="miniPlayerTitle">Título da Música</span>
+      <button onclick="togglePlay()">⏯️</button>
+      <button onclick="nextMusic()">⏭️</button>
     </div>
 
     <script src="script.js"></script>
