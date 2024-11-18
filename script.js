@@ -145,8 +145,8 @@ const playlists = {
   ],
   playlist3: [
     {
-      title: "Música 5 - Artista 5",
-      src: "music/song5.mp3",
+      title: "boiadeira-em-shibuya",
+      src: "music/boiadeira-em-shibuya-jujutsu-kaisen--vitch-lairtonteclas.mp3",
       cover: "images/cover5.jpg",
     },
     {
