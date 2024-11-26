@@ -143,7 +143,7 @@ const playlists = {
       cover: "images/25.jpg",
     },
   ],
-  DAVID: [
+  playlist3: [
     {
       title: "boiadeira-em-shibuya",
       src: "music/boiadeira-em-shibuya-jujutsu-kaisen--vitch-lairtonteclas.mp3",
@@ -156,13 +156,13 @@ const playlists = {
     },
     
   ],
-  ERIK: [
+  playlist4: [
      {
       title: "Música 6 - Artista 6",
       src: "music/song6.mp3",
       cover: "images/cover6.jpg",
     },
-  ]
+  ],
 };
 
 // Carrega uma playlist e exibe no DOM
