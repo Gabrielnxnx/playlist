@@ -9,7 +9,7 @@ const searchBar = document.querySelector(".search-bar");
 
 // Dados das playlists
 const playlists = {
-  playlist1: [
+  GABRIEL: [
     {
       title: "Comuna - prod _offPadrin",
       src: "music/Comuna - prod _offPadrin(MP3_160K).mp3",
@@ -143,7 +143,7 @@ const playlists = {
       cover: "images/25.jpg",
     },
   ],
-  playlist3: [
+  DAVID: [
     {
       title: "boiadeira-em-shibuya",
       src: "music/boiadeira-em-shibuya-jujutsu-kaisen--vitch-lairtonteclas.mp3",
@@ -154,7 +154,15 @@ const playlists = {
       src: "music/song6.mp3",
       cover: "images/cover6.jpg",
     },
+    
   ],
+  ERIK: [
+     {
+      title: "Música 6 - Artista 6",
+      src: "music/song6.mp3",
+      cover: "images/cover6.jpg",
+    },
+  ]
 };
 
 // Carrega uma playlist e exibe no DOM
