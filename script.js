@@ -9,7 +9,7 @@ const searchBar = document.querySelector(".search-bar");
 
 // Dados das playlists
 const playlists = {
-  GABRIEL: [
+  playlist1: [
     {
       title: "Comuna - prod _offPadrin",
       src: "music/Comuna - prod _offPadrin(MP3_160K).mp3",
